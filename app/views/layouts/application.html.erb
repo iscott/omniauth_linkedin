@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Danapp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<% if current_user %>
+	User <%= current_user.email %> signed in
+<% end %>
+<br />
+<%= link_to "Sign in", new_user_session_path %><br />
+<%= link_to "Sign in with Linkedin",user_omniauth_authorize_path(:linkedin) %><br />
+<%= link_to "Sign out", destroy_user_session_path, method: "delete" %><br />
+
+<br />
+<%= yield %>
+
+</body>
+</html>
